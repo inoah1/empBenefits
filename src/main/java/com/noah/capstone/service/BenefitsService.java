@@ -44,7 +44,7 @@ public class BenefitsService {
 			if("Active".equalsIgnoreCase(empStatus)) {
 				List<BenefitsWitholdings> witholds = repository.findByIdEmployeeId(employeeId);
 				double total = witholds.stream().map(BenefitsWitholdings::getWitholdingAmt).reduce(0.0, Double::sum);
-				return new EmpBenefitsDto(employeeId, total);
+				return new EmpBenefitsDto(employeeId, total,witholds.get(0).getWitholdingCurrency());
 			} else {
 				return new EmpBenefitsDto(employeeId, "NOT_FOUND");
 			}

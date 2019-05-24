@@ -2,6 +2,8 @@ package com.noah.capstone.dao.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class BenefitsWitholdings {
@@ -9,6 +11,8 @@ public class BenefitsWitholdings {
 	@EmbeddedId
 	private CompositeKey id;
 	private double witholdingAmt;
+	@Enumerated(EnumType.STRING)
+	private WitholdingCurrency witholdingCurrency;
 	
 	public BenefitsWitholdings() {
 		super();
@@ -34,6 +38,14 @@ public class BenefitsWitholdings {
 
 	public void setWitholdingAmt(double witholdingAmt) {
 		this.witholdingAmt = witholdingAmt;
+	}
+
+	public WitholdingCurrency getWitholdingCurrency() {
+		return witholdingCurrency;
+	}
+
+	public void setWitholdingCurrency(WitholdingCurrency witholdingCurrency) {
+		this.witholdingCurrency = witholdingCurrency;
 	}
 
 	@Override
